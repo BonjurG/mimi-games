@@ -1,17 +1,15 @@
 import random
 
-world_list = ['рукаблуд', 'санина', 'очко', 'блядун', 'мудила']
+word_list = ['математика', 'геометрия', 'информатика', 'программирование', 'питон', 'образование', 'телефон']
 
-
-def get_word(word):
-    result = random.choice(world_list).upper
-    return result()
-
-
+# функция получения случайного слова из списка слов
+def get_word():
+    word = random.choice(word_list)
+    return word.upper()
 # функция получения текущего состояния
 def display_hangman(tries):
-    stages = [  # финальное состояние: голова, торс, обе руки, обе ноги
-        '''
+    stages = [  # финальное состояние: голова, торс, обе руки, обе ногии
+                '''
                    --------
                    |      |
                    |      O
@@ -20,8 +18,8 @@ def display_hangman(tries):
                    |     / \\
                    -
                 ''',
-        # голова, торс, обе руки, одна нога
-        '''
+                # голова, торс, обе руки, одна нога
+                '''
                    --------
                    |      |
                    |      O
@@ -30,8 +28,8 @@ def display_hangman(tries):
                    |     / 
                    -
                 ''',
-        # голова, торс, обе руки
-        '''
+                # голова, торс, обе руки
+                '''
                    --------
                    |      |
                    |      O
@@ -40,8 +38,8 @@ def display_hangman(tries):
                    |      
                    -
                 ''',
-        # голова, торс и одна рука
-        '''
+                # голова, торс и одна рука
+                '''
                    --------
                    |      |
                    |      O
@@ -50,8 +48,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-        # голова и торс
-        '''
+                # голова и торс
+                '''
                    --------
                    |      |
                    |      O
@@ -60,8 +58,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-        # голова
-        '''
+                # голова
+                '''
                    --------
                    |      |
                    |      O
@@ -70,8 +68,8 @@ def display_hangman(tries):
                    |     
                    -
                 ''',
-        # начальное состояние
-        '''
+                # начальное состояние
+                '''
                    --------
                    |      |
                    |      
@@ -82,8 +80,6 @@ def display_hangman(tries):
                 '''
     ]
     return stages[tries]
-
-
 def play(word):
     word_completion = "_" * len(word)
     guessed = False
@@ -135,10 +131,9 @@ def play(word):
     else:
         print('Вы не угадали слово. Загаданным словом было ' + word + '. Может быть в следующий раз!')
 
-
 again = 'д'
 
 while again.lower() == 'д':
     word = get_word()
-    play('get_word')
+    play(word)
     again = input('Играем еще раз? (д = да, н = нет):')
